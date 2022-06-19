@@ -1,0 +1,29 @@
+{% extends "main.html" %}
+
+{% block content %}
+  <h1>Dashboard</h1>
+
+  {% include "status.html" %}
+
+  <div>
+    <h3>customers</h3>
+    {% for customer in customers %}
+      {{customer}}
+      {{customer.phone}}
+      <a href="{% url 'customer' customer.id %}">{{customer}}</a>
+      <br>
+    {% endfor %}
+  </div>
+
+  <div>
+    <h3>Orders</h3>
+    {% for order in orders %}
+      {{order}}
+      {{order.date_created}}
+      {{order.status}}
+      <a href="{% url 'update_order' order.id %}">update</a>
+      <a href="{% url 'delete_order' order.id %}">delete</a>
+      <br>
+    {% endfor %}
+  </div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "main.html" %}
+
+{% block content %}
+  <h3>register page</h3>
+
+  <form action="" method="POST">
+      {% csrf_token %}
+      {{form.username}}
+      {{form.email}}
+      {{form.password1}}
+      {{form.password2}}
+      <input type="submit" name="submit">
+      {{form.errors}}
+  </form>
+{% endblock %}

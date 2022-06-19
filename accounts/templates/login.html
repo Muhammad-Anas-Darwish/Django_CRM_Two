@@ -1,0 +1,15 @@
+{% extends "main.html" %}
+
+{% block content %}
+    <form action="" method="POST">
+        {% csrf_token %}   
+        <input type="text" name="username">
+        <input type="text" name="password">
+        <input type="submit" name="submit">
+    </form>
+    {% for message in messages %}
+        <p id="messages">{{message}}</p>
+    {% endfor %}
+
+    <a href="{% url 'register' %}">register</a>
+{% endblock content %}

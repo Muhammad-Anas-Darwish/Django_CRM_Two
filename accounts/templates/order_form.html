@@ -1,0 +1,16 @@
+{% extends "main.html" %}
+
+{% block content %}
+  <h3>order form</h3>
+  
+  <form method="POST">
+    {% csrf_token %}
+      {{form.management_form}}
+      {% for field in form %}
+       {{field}}
+        <hr>
+      {% endfor %}
+				
+      <input type="submit" name="Submit">
+  </form>
+{% endblock %}

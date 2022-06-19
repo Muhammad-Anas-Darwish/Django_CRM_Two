@@ -1,0 +1,48 @@
+{% extends "main.html" %}
+
+{% block content %}
+  <div>
+    <h1>Customer</h1>
+    <a href="">update customer</a>
+    <a href="">place new order</a>
+  </div>
+  <div>
+  
+    {{form.email}}
+    {{form.phone}}
+  </div>
+  <div>
+    <h3>total order</h3>
+    {{total_orders}}
+  </div>
+
+  <div>
+    <form action="" method="GET">
+      {{myFilter.form}}
+      <input type="submit" name="submit">
+    </form>
+  </div>
+
+  <div>
+    <table>
+      <tr>
+        <th>product</th>
+        <th>category</th>
+        <th>date order</th>
+        <th>status order</th>
+        <th>update</th>
+        <th>delete</th>
+      </tr>
+      {% for order in orders %}
+      <tr>
+        <td>{{order}}</td>
+        <td>{{order.product.category}}</td>
+        <td>{{order.date_created}}</td>
+        <td>{{order.status}}</td>
+        <td><a href="{% url 'update_order' order.id %}">update</a></td>
+        <td><a href="{% url 'delete_order' order.id %}">delete</a></td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+{% endblock %}

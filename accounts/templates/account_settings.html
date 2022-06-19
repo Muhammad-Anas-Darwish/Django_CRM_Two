@@ -1,0 +1,22 @@
+{% extends "main.html" %}
+{% load static %}
+
+{% block content %}
+    
+    <form method="POST" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        {% if request.user.customer.profile_pic.url is not null %}
+            <img src="{{request.user.customer.profile_pic.url}}" alt="my face">
+
+        {% else %}
+            <img src="{% static 'images/profile1.png' %}" alt="image profile">
+        {% endif %}
+            
+        
+
+        {{form.as_p}}
+
+        <input type="submit" name="Update Information">
+    </form>
+{% endblock %}

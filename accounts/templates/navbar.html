@@ -1,0 +1,16 @@
+{% load static %}
+
+<img src="{% static 'images/logo.png' %}" alt="logo">
+
+{% if request.user.is_staff %}
+    <a href="{% url 'home' %}">Dashboard</a>
+    <a href="{% url 'product' %}">Product</a>
+{% else %}
+    <a href="{% url 'account' %}">Settings</a>
+{% endif %}
+
+{% if user.is_authenticated %}
+<span>Hello, {{request.user}}</span>
+<a href="{% url 'logout' %}">logout</a>
+{% endif %}
+
